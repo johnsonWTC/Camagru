@@ -1,57 +1,76 @@
 <?php
-    session_start();
+//start session
+session_start();
 
-    include 'alert.php';
-    require_once('database.php');
+include 'alert.php';
+require_once('database.php');
 
-    //check if the user is already connected
-    if (isset($_SESSION['name']) != "")
-    {
-        header('Location : home.php');
-    }
+//check if user is already connect
+if (isset($_SESSION['uname']) != "")
+{
+	header('Location: home.php');
+}
 
-    $error = false;
+$error = false;
 
-    if (isset($_POST['submit']) == 'ok')
-    {
-        $username = trim($_POST['uname']);
-        $username = strip_tag([$username]);
-        $username = htmlspecialchars($username);
-        $pass = $_POST['pword'];
+if (isset($_POST['submit']) == 'ok')
+{
+	//prevention against sql injections
+	/*$email = trim($_POST['email']);
+	$email = strip_tags($email);
+	$email = htmlspecialchars($email);*/
 
-    //password validation
-    if (!isset($_POST['pword']))
-    {
-        $error = true;
-        $password = "Plase fill in the password field";
-        errorFunc($passwordError);
-    }
+	$username = trim($_POST['uname']);
+	$username = strip_tags($username);
+	$username = htmlspecialchars($username);
 
-    if (!$error)
-    {
-        try
-        {
-            $db = new POD("mysql:$dsn", $user, $password);
-            $db->query("Use camagu");
-            $passw = hash('sha256', $pass);
-            $result = $db->prepare("SELECT username, userEmail, passord from users where username = '$username';");
-            $result->execute(array("uname"=>$username));
-            $row = $result->fetch(POD::FETCH_ASSOC);
-            //echo $result->rowCount() ."\n";
-            if ($result->rowCount() === 1 && $row['password'] === $passw && $row['username'] === $username)
-            {
-                $_SESSION['user'] = $row[0]['username'];
-                header('Location: home.php');
-            }
-            else
-            {
-                errorFunc("Check your password or username and try again! p &#x1F601 :-)");
-            }
-        }
-        catch(PODExpection $e)
-        {
-            die ("Failed to connect: " .$e->getMessage());
-        }
-    }
+	$pass = $_POST['pword'];
+
+	//email validation
+	/*if (!filter_var($email, FILTER_VALIDATE_EMAIL))
+	{
+		$error = true;
+		$emailError = "Please enter a valid email address";
+	}*/
+
+	//password validation
+	if (!isset($_POST['pword']))
+	{
+		$error = true;
+		$passwordError = "Please fill in the password field";
+		errorFunc($passwordError);
+	}
+
+	if (!$error)
+	{
+		try 
+		{
+			
+		$db = new PDO("mysql:$dsn", $user, $password);
+
+		$db->query("Use camagru;");
+
+		$passw = hash('sha256', $pass);
+
+		$result = $db->prepare("SELECT username, userEmail, password 
+		   					FROM Users WHERE username='$username';");	
+		$result->execute(array("uname"=>$username));
+		$row = $result->fetch(PDO::FETCH_ASSOC);
+		//echo $result->rowCount() ."\n";
+		if ($result->rowCount() === 1 && $row['password'] === $passw && $row['username'] === $username)
+		{
+			$_SESSION['user'] = $row[0]['username'];
+			header('Location: home.php');
+		}
+		else
+		{
+			errorFunc("Check your password or username and try again! :-)");
+		}
+		}
+		catch(PDOException $e)
+		{
+			die ("failed to connect: " .$e->getMessage());
+		}
+	}
 }
 ?>
