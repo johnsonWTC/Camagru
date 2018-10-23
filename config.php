@@ -48,6 +48,7 @@ try
 											FOREIGN KEY(images_id) REFERENCES Images(id));";
 
 	$db->query($likes) or die(print_r($db->errorInfo(), true));
+	header('Location: sign_up.php');
 
 }
 catch(PDOException $e) 

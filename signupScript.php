@@ -11,12 +11,12 @@ if (isset($_SESSION['username']) != "")
 require_once('database.php');
 include 'alert.php';
 
-/*$_POST['fname'] = 'mceb';
+/*$_POST['fname'] = 'mcebo';
 $_POST['lname'] = 'xaba';
-$_POST['uname'] = 'mcb21';
-$_POST['pword'] = 'mcebo12345!';
-$_POST['cfpword'] = 'mcebo12345!';
-$_POST['email'] = 'samuel.mcebo@gmail.com';
+$_POST['uname'] = 'mxaba1';
+$_POST['pword'] = 'okay12345!';
+$_POST['cfpword'] = 'okay12345!';
+$_POST['email'] = 'tmgsibanda@gmail.com';
 $_POST['submit'] = 'ok';*/
 
 try

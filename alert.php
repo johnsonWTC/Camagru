@@ -1,34 +1,36 @@
 <?php
-    function goodAlert($msg)
-    {
-?>
-<html>
-    <head>
-        <script language = "javascript">
-            alert("<?=$msg?>");
-        </script>
-    </head>
-    <body>
-    </body>
-</html>
-<?php
-    exit;
-    }
-?>
-<?php
-function badArlert($msg)
+function goodAlert($msg)
 {
 ?>
 <html>
-    <script langauge = "javascript">
-        alert("<?=$msg?>");
-    history.back();
-    </script>
+<head>
+	<script language = "javascript">
+		alert("<?=$msg?>");
+		</script>
 </head>
 <body>
 </body>
 </html>
 <?php
-    exit;
+	exit;
+}
+?>
+
+<?php
+function badAlert($msg)
+{
+?>
+<html>
+<head>
+	<script language = "javascript">
+		alert("<?=$msg?>");
+	history.back();
+		</script>
+</head>
+<body>
+</body>
+</html>
+<?php
+	exit;
 }
 ?>

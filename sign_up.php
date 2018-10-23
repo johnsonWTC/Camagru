@@ -6,7 +6,7 @@
 	</head>
 	<body>
 		<div class = "imageContainer">
-			<img src="https://image.flaticon.com/icons/png/512/17/17004.png" class="avatar">
+			<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRMIHcGO1-KSDnJuGlo53o2fPA_FsEiuN5Xlbh7fnYq7WQOW3Br" class="avatar">
 		</div>
 		<form action="signupScript.php" method="post">
 			<div class = "login">
@@ -26,7 +26,7 @@
 				<span><button type="button" name = "cancel" value = "ok" class="cancelbtn">Cancel</button></span>
 			</div>
 			<div class = "links">
-				Already have Account? <a href = "login.php">Sign in</a>
+				Already have Account? <a href="login.html">Sign in</a>
 			</div>
 		</form>
 	</body>
