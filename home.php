@@ -6,11 +6,11 @@
 	</head>
 	<body>
 		<div class = "main">
-		<div ><button id = "btn" onclick = "snapShot()" type = "submit" class="click-camerabtn" name = "submit" value = "ok">Take Photo</button></div>
+		<div ><button id = "btn" onclick = "snapShot()" type = "submit" class = "click-camerabtn" name = "submit" value = "ok">Take Photo</button></div>
 			<div class = "video">
 				<video autoplay = "true" id = "videoElement"></video>
 				<form method = "post" action = "upload.php" enctype = "multipart/form-data">
-					</br></br><span>Select image: <input type="file"  name = "filename" size = "40" onchange = "loadFile(event)" accept = "image/gif, image/jpeg, image/png"/>
+					</br></br><span>Select image: <input type = "file"  name = "filename" size = "40" onchange = "loadFile(event)" accept = "image/gif, image/jpeg, image/png"/>
 						<input type = "submit" name = "submit" value="upload"/></span>
 				</form>
 			</div>
