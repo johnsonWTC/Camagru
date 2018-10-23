@@ -54,7 +54,7 @@
 
 .selected
 {
-	/*border: 1px #000 solid;*/
+	border: 1px #000 solid;
 	width: 40px;
 	height: 32px;
 	box-shadow:0px 6px 10px 3px teal;
