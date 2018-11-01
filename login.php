@@ -16,7 +16,7 @@
 					</div>
 					<div class = "links">
 						New to Camagru? <a href="sign_up.php">Sign up</a>
-						<a class="forgotPswd" href="#">Forgot Password</a>
+						<a class="forgotPswd" href="forgotPassword.php">Forgot Password</a>
 					</div>
 				</form>
 	</body>

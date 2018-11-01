@@ -19,14 +19,18 @@
 				<label><b>Username</b></label>
 				<input type="text" placeholder="Enter username" name="uname" pattern=".{3,}" title="Must contain atlest 3 or more characters" required>
 				<label><b>Password</b></label>
-				<input type="password" placeholder="Enter password" name="pword" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
+				<input type="password" placeholder="Enter password" name="pword" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" required>
 				<label><b>Confirm Password</b></label>
 				<input type="password" placeholder="Confirm password" name="cfpword" required>
 				<button type = "submit" name="submit" value = "ok">Sign Up</button>
+			
+				
 				<span><button type="button" name = "cancel" value = "ok" class="cancelbtn">Cancel</button></span>
 			</div>
+			
 			<div class = "links">
-				Already have Account? <a href="login.php">Sign in</a>
+			Already have Account? <a href="login.php">Sign in</a>
+
 			</div>
 		</form>
 	</body>

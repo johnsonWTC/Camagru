@@ -1,5 +1,5 @@
 <?php
 $dsn = "host=localhost; charset=utf8";
 $user = "root";
-$password = "wethinkcode";
+$password = "jamgod123";
 ?>

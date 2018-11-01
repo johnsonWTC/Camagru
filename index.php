@@ -14,11 +14,15 @@ try
 
 	$users = "CREATE TABLE IF NOT EXISTS Users (id INT(6) UNSIGNED AUTO_INCREMENT NOT NULL, 
 											firstname VARCHAR(30) NOT NULL, 
+											
 											lastname VARCHAR(30) NOT NULL, 
 											username VARCHAR(30) NOT NULL UNIQUE, 
 											userEmail VARCHAR(30) NOT NULL UNIQUE, 
 											password VARCHAR(100) NOT NULL,
 											reg_date DATETIME NOT NULL,
+											isEmailConfirmed VARCHAR(30) NOT NULL,
+											token VARCHAR(30) NOT NULL,
+											token_p VARCHAR(30) NOT NULL,
 											PRIMARY KEY(id));";
 
 	$db->query($users) or die(print_r($db->errorInfo(), true));

@@ -19,6 +19,7 @@ $_POST['cfpword'] = 'okay12345!';
 $_POST['email'] = 'tmgsibanda@gmail.com';
 $_POST['submit'] = 'ok';*/
 
+
 try
 {
 	//create a new instance 
@@ -128,14 +129,34 @@ try
 
 		if (!$error)
 		{
-			$result = $db->prepare("INSERT INTO Users (firstname, lastname, username, userEmail, password, reg_date) 
-				VALUES ('$firstname', '$lastname', '$username', '$email', '$passw', now());") or die("failed query". $db->errorInfo());
+			
+			$token = 'qwertzuiopasdfghjklyxcvbnmQWERTZUIOPASDFGHJKLYXCVBNM0123456789!$/()*';
+			$token = str_shuffle($token);
+			$token = substr($token, 0, 10);
+		
+			   $result = $db->prepare("INSERT INTO Users (firstname, lastname, username, userEmail, password, reg_date,isEmailConfirmed,token,token_p) 
+				VALUES ('$firstname', '$lastname', '$username', '$email', '$passw', now(),'0', '$token','');") or die("failed query". $db->errorInfo());
 			$result->execute();
 			if ($result)
 			{
+					$to = $email;
+					$subject = "email confirmation";
+			
+					$message = "<b>To verify your account, please </b>";
+					$message .= "<a href='http://127.0.0.1:8080/Camagru/confirm.php?userEmail=$email&token=$token'>Click Here</a> ";
+					$header = "From:verifyaccount@Camagru.com \r\n";
+				//	$header .= "Cc:afgh@somedomain.com \r\n";
+					$header .= "MIME-Version: 1.0\r\n";
+					$header .= "Content-type: text/html\r\n";
+			
+					$retval = mail ($to,$subject,$message,$header);
+					if( $retval == true ) {
+						echo "an email has been sent to your email account for commifarmation";
+				
+				
 				$errMSG = "Successfully logged in";
 				//errorFunc($errMSG);
-				header('Location: home.php');
+				//header('Location: home.php');
 				/*unset($fname);
 				unset($lname);
 				unset($uname);
@@ -147,9 +168,15 @@ try
 				$errMSG = "Something went wrong";
 				errorFunc($errMSG);
 			}
+			}
+			else {
+			   echo "Message could not be sent...";
+			}	
 
 		}
 	}
+
+	
 }
 catch(PDOException $e)
 {
